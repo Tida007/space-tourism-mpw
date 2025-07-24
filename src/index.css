@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+    /*
+    Colors
+    */
+
+    --dark-blue: #0b0d17;
+    --light-blue: #d0d6f9;
+    --white: #ffffff;
+    --subTitle-color: #555;
+    --navbar-height: 80px;
+    --navbar-bg-color: rgba(135, 143, 158, 0.21);
+
+    /* Fonts */
+    --main-font: 'Barlow', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: var(--main-font);
+}
+
+.section {
+    @apply px-8 md:px-20;
+}
+
+.navbar-bg-color {
+    @apply backdrop-blur-xl backdrop-saturate-150 bg-(--navbar-bg-color);
+}
