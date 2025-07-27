@@ -26,7 +26,8 @@ const TopSectionContainer = styled.div.withConfig({
     `}
 
     @media screen and (min-width: ${breakpoints.md}) {
-        max-width: auto;
+        max-width: 68rem;
+        padding-inline:1rem ;
     }
 `;
 

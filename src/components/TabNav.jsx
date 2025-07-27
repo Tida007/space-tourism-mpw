@@ -47,6 +47,14 @@ const NavLinks = styled.ul.withConfig({
   margin-top: 4rem;
 
   ${(props) =>
+    props.type === "named" &&
+    css`
+      @media screen and (min-width: ${breakpoints.md}) {
+        justify-content: flex-start;
+      }
+    `}
+
+  ${(props) =>
     props.type === "dotted" &&
     css`
       gap: 1rem;
@@ -68,7 +76,7 @@ const NavLinks = styled.ul.withConfig({
 `;
 
 const TabNavItem = styled(NavLink)`
-  padding: 1rem 0.5rem;
+  padding: 2rem 1.5rem;
   border-bottom: 3px solid transparent;
   display: inline-block;
 
