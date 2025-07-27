@@ -27,6 +27,28 @@ body {
 }
 
 .navbar-bg-color {
-    @apply backdrop-blur-xl backdrop-saturate-150 bg-(--navbar-bg-color);
+    background-color: rgba(135, 143, 158, 0.21) !important;
+    backdrop-filter: blur(16px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
     padding: 2rem;
+    /* Fallback for Dark Reader and other extensions */
+    background: linear-gradient(135deg, rgba(135, 143, 158, 0.3), rgba(135, 143, 158, 0.15)) !important;
+    /* Ensure visibility */
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Dark Reader compatibility */
+@media (prefers-color-scheme: dark) {
+    .navbar-bg-color {
+        background-color: rgba(135, 143, 158, 0.4) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+/* Force visibility for browser extensions */
+nav[class*="navbar-bg-color"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
