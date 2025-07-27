@@ -4,9 +4,13 @@ import Home from "./pages/Home";
 import Destination from "./pages/Destination";
 import Crew from "./pages/Crew";
 import Technology from "./pages/Technology";
+import GlobalStyles from "./styles/GlobalStyles.js";
+import TabNav from "./components/TabNav";
 
 function App() {
   return (
+    <>
+      <GlobalStyles />
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
@@ -24,6 +28,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 

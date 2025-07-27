@@ -28,4 +28,5 @@ body {
 
 .navbar-bg-color {
     @apply backdrop-blur-xl backdrop-saturate-150 bg-(--navbar-bg-color);
+    padding: 2rem;
 }

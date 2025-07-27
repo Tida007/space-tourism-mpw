@@ -1,9 +1,9 @@
 import React from 'react';
+import DestinationContents from '../features/DestinationContents';
 
 function Destination() {
-  return (
-    <div>Destination</div>
-  )
+    return <DestinationContents />;
+  
 }
 
 export default Destination;

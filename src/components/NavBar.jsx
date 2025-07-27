@@ -1,6 +1,7 @@
 import jsonData from "../assets/data.json";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
 import Logo from "/images/shared/logo.svg";
 
 function NavBar() {
@@ -11,17 +12,17 @@ function NavBar() {
     <>
         <header className="flex items-center justify-between relative p-4 md:p-8">
               {/* Logo */}
-              <Link to="/home" className="w-12 md:w-16">
+              <Link to="/home" className="w-8 md:w-16">
                   <img src={Logo} alt="Logo" className="w-full"/>
               </Link>
 
               {/* Line (visible on larger screens) */}
-              <span className="hidden md:block flex-grow h-[2px] bg:white/30 mx-8"></span>
+              <span className="hidden md:block flex-grow h-[2px] bg-white/30 ml-28"></span>
 
               {/* Menu Button (visible on smaller screens) */}
               <button
                   onClick={() => setIsOpen((open) => !open)}
-                  className="z-20 md:hidden"
+                  className="z-50 md:hidden"
               >
                   <img
                       src={`/images/shared/icon-${isOpen ? "close" : "hamburger"}.svg`}
@@ -39,9 +40,9 @@ function NavBar() {
 
               {/* Navigation */}
               <nav
-                  className={`fixed top-0 right-0 h-screen w-52 bg-white/10 backdrop-blur-md transition-transform transform ${
+                  className={`navbar-bg-color fixed top-0 right-0 h-screen w-full bg-white/10 backdrop-blur-md transition-transform transform ${
                       isOpen ? "translate-x-0" : "translate-x-full"
-                  } z-20 md:static md:h-auto md:w-auto md:bg-transparent md:backdrop-blur-none md:translate-x-0`}
+                  } z-50 md:static md:h-auto md:w-auto md:bg-transparent md:backdrop-blur-none md:translate-x-0`}
               >
                   <ul className="flex flex-col mt-20 space-y-4 pl-8 uppercase md:flex-row md:mt-0 md:space-y-0 md:space-x-8 md:pl-0">
                       <li>
