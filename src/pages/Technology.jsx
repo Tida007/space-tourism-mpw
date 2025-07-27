@@ -1,9 +1,7 @@
-import React from 'react'
+import TechnologyContents from "../features/TechnologyContents";
 
 function Technology() {
-  return (
-    <div>Technology</div>
-  )
-}
+  return <TechnologyContents />;
 
+}
 export default Technology;
