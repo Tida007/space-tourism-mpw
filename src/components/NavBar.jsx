@@ -32,8 +32,8 @@ function NavBar() {
               {/* Overlay (visible when menu is open) */}
               {isOpen && (
                   <span
-                      onClick={() => ((open) => !open)}
-                      className="fixed top-0 left-0 w-full h-full bg-black/30 z-10"
+                      onClick={() => ((open) => setIsOpen(false))}
+                      className="fixed top-0 left-0 w-full h-full bg-black/30 z-40"
                   ></span>
               )}
 
