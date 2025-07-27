@@ -15,7 +15,7 @@ function DestinationContents() {
   const destinations = jsonData.destination;
   const { name: destinationName } = useParams();
   const activeName = destinationName || destinations[0].name;
-  const currentDest = destinations.find((des) => des.name === activeName);
+  const currentDest = destinations.find((des) => des.name.toLowerCase() === activeName.toLowerCase());
 
   if (!destinationName)
     return <Navigate to={`/destination/${destinations[0].name}`} replace />;
@@ -27,7 +27,7 @@ function DestinationContents() {
 
     <ContentsContainer>
         <ImageContainer>
-            <img src={currentDest.images.webp} alt={currentDest.name} />
+            <img src={currentDest.images?.webp || currentDest.image?.webp} alt={currentDest.name} />
         </ImageContainer>
 
         <TopSectionContainer>
@@ -58,7 +58,9 @@ const Details = styled.div`
     grid-template-columns: 1fr 1fr;
     text-align: center;
     position: relative;
-    padding-top: 1rem;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    gap: 2rem;
 
     @media screen and (min-width: ${breakpoints.md}) {
         text-align: left;

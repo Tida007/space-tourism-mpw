@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const InfoText = styled.p`
     opacity: 0.8;

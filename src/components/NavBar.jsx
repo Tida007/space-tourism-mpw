@@ -39,41 +39,120 @@ function NavBar() {
               )}
 
               {/* Navigation */}
-              <nav
-                  className={`navbar-bg-color fixed top-0 right-0 h-screen w-full bg-white/10 backdrop-blur-md transition-transform transform ${
-                      isOpen ? "translate-x-0" : "translate-x-full"
-                  } z-50 md:static md:h-auto md:w-auto md:bg-transparent md:backdrop-blur-none md:translate-x-0`}
-              >
-                  <ul className="flex flex-col mt-20 space-y-4 pl-8 uppercase md:flex-row md:mt-0 md:space-y-0 md:space-x-8 md:pl-0">
+              <StyledNav isOpen={isOpen}>
+                  <StyledNavList>
                       <li>
-                          <NavLink
+                          <StyledNavLink
                               to="/home"
-                              className={({ isActive }) => 
-                                  `flex gap-2 border-b-2 pb-1 ${isActive ? "border-white" : "border-transparent"} hover:border-white/30`
-                            }
                               onClick={() => setIsOpen(false)}
                           >
                               <span>00</span> <span>Home</span>
-                          </NavLink>
+                          </StyledNavLink>
                       </li>
                       {navItemsNames.map((item, i) => (
                           <li key={item}>
-                              <NavLink
+                              <StyledNavLink
                                   to={`${item}`}
-                                  className={({ isActive }) =>
-                                      `flex gap-2 border-b-2 pb-1 ${isActive ? "border-white" : "border-transparent"} hover:border-white/30`
-                                }
                                   onClick={() => setIsOpen(false)}
                               >
                                   <span>0{i + 1}</span> <span>{item}</span>
-                              </NavLink>
+                              </StyledNavLink>
                           </li>
                       ))}
-                  </ul>
-              </nav>
+                  </StyledNavList>
+              </StyledNav>
         </header>
     </>
   );
 }
+
+const StyledNav = styled.nav.withConfig({
+  shouldForwardProp: (prop) => "isOpen" !== prop,
+})`
+  /* Mobile styles */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 50;
+  transition: transform 0.3s ease;
+  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'};
+
+  /* Dark Reader resistant background */
+  background-color: rgba(135, 143, 158, 0.21) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+
+  /* Force visibility */
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+
+  /* Desktop styles */
+  @media screen and (min-width: 768px) {
+    position: static;
+    height: auto;
+    width: auto;
+    transform: translateX(0) !important;
+
+    /* Add backdrop blur for desktop */
+    background-color: rgba(135, 143, 158, 0.15) !important;
+    backdrop-filter: blur(40px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(150%) !important;
+
+    /* Ensure desktop nav is always visible */
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+
+    /* Add padding and rounded corners like in screenshot */
+    padding: 2rem 3rem !important;
+    border-radius: 0 0 0 0 !important;
+  }
+`;
+
+const StyledNavList = styled.ul`
+  display: flex !important;
+  flex-direction: column;
+  margin-top: 5rem;
+  gap: 1rem;
+  padding-left: 2rem;
+  text-transform: uppercase;
+  list-style: none;
+
+  /* Force visibility */
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: white !important;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    margin-top: 0;
+    gap: 2rem;
+    padding-left: 0;
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  display: flex !important;
+  gap: 0.5rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.25rem;
+  color: white !important;
+  text-decoration: none !important;
+
+  /* Force visibility */
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  &:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  &.active {
+    border-bottom-color: white !important;
+  }
+`;
 
 export default NavBar;
