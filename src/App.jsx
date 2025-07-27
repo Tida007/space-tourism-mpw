@@ -5,7 +5,6 @@ import Destination from "./pages/Destination";
 import Crew from "./pages/Crew";
 import Technology from "./pages/Technology";
 import GlobalStyles from "./styles/GlobalStyles.js";
-import TabNav from "./components/TabNav";
 
 function App() {
   return (
